@@ -5,8 +5,9 @@
  *   @author masensio
  *   @author David A. Velasco
  *   @author Christian Schabesberger
+ *   @author David González Verdugo
  *   Copyright (C) 2011 Bartek Przybylski
- *   Copyright (C) 2018 ownCloud GmbH.
+ *   Copyright (C) 2019 ownCloud GmbH.
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License version 2,

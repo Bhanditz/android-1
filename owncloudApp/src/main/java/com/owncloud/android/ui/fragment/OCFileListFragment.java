@@ -8,7 +8,7 @@
  *   @author David González Verdugo
  *   @author Shashvat Kedia
  *   Copyright (C) 2011  Bartek Przybylski
- *   Copyright (C) 2018 ownCloud GmbH.
+ *   Copyright (C) 2019 ownCloud GmbH.
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License version 2,
@@ -36,6 +36,7 @@ import android.os.PowerManager;
 import android.preference.PreferenceManager;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialog;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;

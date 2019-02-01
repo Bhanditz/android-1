@@ -142,14 +142,8 @@ public class FileDownloadFragment extends FileFragment implements OnClickListene
 
         (rootView.findViewById(R.id.cancelBtn)).setOnClickListener(this);
 
-        LinearLayout fileDownloadLL = getActivity().findViewById(R.id.fileDownloadLL);
-
-        fileDownloadLL.setFilterTouchesWhenObscured(
+        rootView.setFilterTouchesWhenObscured(
                 PreferenceUtils.shouldAllowTouchesWithOtherVisibleWindows(getContext())
-        );
-
-        fileDownloadLL.setOnClickListener(v ->
-                ((PreviewImageActivity) getActivity()).toggleFullScreen()
         );
 
         if (mError) {

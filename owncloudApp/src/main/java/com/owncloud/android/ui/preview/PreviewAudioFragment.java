@@ -3,7 +3,8 @@
  *
  *   @author David A. Velasco
  *   @author Christian Schabesberger
- *   Copyright (C) 2018 ownCloud GmbH.
+ *   @author David González Verdugo
+ *   Copyright (C) 2019 ownCloud GmbH.
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License version 2,
@@ -52,6 +53,7 @@ import com.owncloud.android.ui.dialog.ConfirmationDialogFragment;
 import com.owncloud.android.ui.dialog.RemoveFilesDialogFragment;
 import com.owncloud.android.ui.fragment.FileFragment;
 import com.owncloud.android.utils.DisplayUtils;
+import com.owncloud.android.utils.PreferenceUtils;
 
 
 /**

@@ -2,7 +2,8 @@
  *   ownCloud Android client application
  *
  *   @author Christian Schabesberger
- *   Copyright (C) 2018 ownCloud GmbH.
+ *   @author David González Verdugo
+ *   Copyright (C) 2019 ownCloud GmbH.
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License version 2,
@@ -20,6 +21,7 @@
 package com.owncloud.android.ui.dialog;
 
 import com.owncloud.android.R;
+import com.owncloud.android.utils.PreferenceUtils;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
