@@ -2,7 +2,7 @@
  *   ownCloud Android client application
  *
  *   @author David González Verdugo
- *   Copyright (C) 2018 ownCloud GmbH.
+ *   Copyright (C) 2019 ownCloud GmbH.
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License version 2,
@@ -34,12 +34,14 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.owncloud.android.R;
 import com.owncloud.android.lib.common.utils.Log_OC;
 import com.owncloud.android.ui.adapter.LogListAdapter;
 import com.owncloud.android.ui.dialog.LoadingDialog;
 import com.owncloud.android.utils.FileStorageUtils;
+import com.owncloud.android.utils.PreferenceUtils;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -68,6 +70,13 @@ public class LogHistoryActivity extends ToolbarActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.logs);
+
+        // Allow or disallow touches with other visible windows
+        LinearLayout logsLayout = findViewById(R.id.logsLayout);
+        logsLayout.setFilterTouchesWhenObscured(
+                PreferenceUtils.shouldAllowTouchesWithOtherVisibleWindows(this)
+        );
+
         setupToolbar();
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);

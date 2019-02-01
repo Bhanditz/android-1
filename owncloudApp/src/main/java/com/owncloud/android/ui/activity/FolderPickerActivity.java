@@ -2,7 +2,8 @@
  *   ownCloud Android client application
  *
  *   @author Shashvat Kedia
- *   Copyright (C) 2018 ownCloud GmbH.
+ *   @author David González Verdugo
+ *   Copyright (C) 2019 ownCloud GmbH.
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License version 2,
@@ -40,6 +41,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.owncloud.android.R;
 import com.owncloud.android.datamodel.OCFile;
@@ -52,10 +54,10 @@ import com.owncloud.android.operations.RefreshFolderOperation;
 import com.owncloud.android.operations.common.SyncOperation;
 import com.owncloud.android.syncadapter.FileSyncAdapter;
 import com.owncloud.android.ui.dialog.CreateFolderDialogFragment;
+import com.owncloud.android.ui.errorhandling.ErrorMessageAdapter;
 import com.owncloud.android.ui.fragment.FileFragment;
 import com.owncloud.android.ui.fragment.OCFileListFragment;
-import com.owncloud.android.ui.errorhandling.ErrorMessageAdapter;
-import com.owncloud.android.utils.FileStorageUtils;
+import com.owncloud.android.utils.PreferenceUtils;
 
 import java.util.ArrayList;
 
@@ -85,6 +87,12 @@ public class FolderPickerActivity extends FileActivity implements FileFragment.C
         super.onCreate(savedInstanceState); 
 
         setContentView(R.layout.files_folder_picker);     // beware - inflated in other activities too
+
+        // Allow or disallow touches with other visible windows
+        LinearLayout filesFolderPickerLayout = findViewById(R.id.filesFolderPickerLayout);
+        filesFolderPickerLayout.setFilterTouchesWhenObscured(
+                PreferenceUtils.shouldAllowTouchesWithOtherVisibleWindows(this)
+        );
         
         if (savedInstanceState == null) {
             createFragments();

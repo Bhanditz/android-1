@@ -6,7 +6,7 @@
  * @author Juan Carlos González Cabrero
  * @author David González Verdugo
  * @author Christian Schabesberger
- * Copyright (C) 2018 ownCloud GmbH.
+ * Copyright (C) 2019 ownCloud GmbH.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2,
@@ -56,6 +56,7 @@ import com.owncloud.android.ui.adapter.ShareUserListAdapter;
 import com.owncloud.android.ui.dialog.RemoveShareDialogFragment;
 import com.owncloud.android.utils.DisplayUtils;
 import com.owncloud.android.utils.MimetypeIconUtil;
+import com.owncloud.android.utils.PreferenceUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -448,8 +449,14 @@ public class ShareFileFragment extends Fragment
             usersList.setVisibility(View.GONE);
         }
 
-        // Set Scroll to initial position
         ScrollView scrollView = getView().findViewById(R.id.shareScroll);
+
+        // Allow or disallow touches with other visible windows
+        scrollView.setFilterTouchesWhenObscured(
+                PreferenceUtils.shouldAllowTouchesWithOtherVisibleWindows(getContext())
+        );
+
+        // Set Scroll to initial position
         scrollView.scrollTo(0, 0);
     }
 
@@ -545,6 +552,12 @@ public class ShareFileFragment extends Fragment
 
         // Set Scroll to initial position
         ScrollView scrollView = getView().findViewById(R.id.shareScroll);
+
+        // Allow or disallow touches with other visible windows
+        scrollView.setFilterTouchesWhenObscured(
+                PreferenceUtils.shouldAllowTouchesWithOtherVisibleWindows(getContext())
+        );
+
         scrollView.scrollTo(0, 0);
     }
 

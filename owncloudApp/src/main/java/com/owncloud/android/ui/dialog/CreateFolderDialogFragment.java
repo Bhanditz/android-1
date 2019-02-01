@@ -3,7 +3,8 @@
  *
  *   @author David A. Velasco
  *   @author Christian Schabesberger
- *   Copyright (C) 2018 ownCloud GmbH.
+ *   @author David González Verdugo
+ *   Copyright (C) 2019 ownCloud GmbH.
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License version 2,
@@ -21,22 +22,24 @@
 
 package com.owncloud.android.ui.dialog;
 
-import com.owncloud.android.R;
-import com.owncloud.android.datamodel.OCFile;
-import com.owncloud.android.lib.resources.files.FileUtils;
-import com.owncloud.android.ui.activity.ComponentsGetter;
-
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager.LayoutParams;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.owncloud.android.R;
+import com.owncloud.android.datamodel.OCFile;
+import com.owncloud.android.lib.resources.files.FileUtils;
+import com.owncloud.android.ui.activity.ComponentsGetter;
+import com.owncloud.android.utils.PreferenceUtils;
 
 /**
  *  Dialog to input the name for a new folder to create.  
@@ -74,6 +77,17 @@ public class CreateFolderDialogFragment
         // Inflate the layout for the dialog
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View v = inflater.inflate(R.layout.edit_box_dialog, null);
+
+        // Allow or disallow touches with other visible windows
+        v.setFilterTouchesWhenObscured(
+                PreferenceUtils.shouldAllowTouchesWithOtherVisibleWindows(getContext())
+        );
+
+        CoordinatorLayout coordinatorLayout = getActivity().findViewById(R.id.coordinator_layout);
+
+        coordinatorLayout.setFilterTouchesWhenObscured(
+                PreferenceUtils.shouldAllowTouchesWithOtherVisibleWindows(getContext())
+        );
         
         // Setup layout 
         EditText inputText = v.findViewById(R.id.user_input);

@@ -6,7 +6,7 @@
  * @author Juan Carlos González Cabrero
  * @author David González Verdugo
  * @author Christian Schabesberger
- * Copyright (C) 2018 ownCloud GmbH.
+ * Copyright (C) 2019 ownCloud GmbH.
  *
  *
  * This program is free software: you can redistribute it and/or modify
@@ -32,6 +32,7 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 
 import com.owncloud.android.R;
 import com.owncloud.android.datamodel.OCFile;
@@ -55,6 +56,7 @@ import com.owncloud.android.ui.fragment.PublicShareDialogFragment;
 import com.owncloud.android.ui.fragment.SearchShareesFragment;
 import com.owncloud.android.ui.fragment.ShareFileFragment;
 import com.owncloud.android.ui.fragment.ShareFragmentListener;
+import com.owncloud.android.utils.PreferenceUtils;
 
 
 /**
@@ -82,6 +84,12 @@ public class ShareActivity extends FileActivity
         mGetSharesForFileAsyncTask = null;
 
         setContentView(R.layout.share_activity);
+
+        // Allow or disallow touches with other visible windows
+        LinearLayout shareActivityLayout = findViewById(R.id.share_activity_layout);
+        shareActivityLayout.setFilterTouchesWhenObscured(
+                PreferenceUtils.shouldAllowTouchesWithOtherVisibleWindows(this)
+        );
 
         // Set back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
